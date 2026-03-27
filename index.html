@@ -18,6 +18,8 @@
   .hero { text-align: center; padding: 80px 20px 60px; }
   .hero-img { width: 120px; height: 120px; border-radius: 50%; background: #f0f0f0; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; font-size: 42px; overflow: hidden; position: relative; cursor: pointer; border: 3px solid #eee; }
   .hero-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; border-radius: 50%; }
+  .hero-img .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 11px; }
+  .hero-img:hover .overlay { display: flex; }
   .hero h1 { font-family: 'Lora', serif; font-size: 32px; color: #222; margin-bottom: 10px; }
   .hero p { color: #888; font-size: 15px; max-width: 400px; margin: 0 auto 24px; line-height: 1.7; }
   .pill { display: inline-flex; align-items: center; gap: 8px; background: #f5f5f5; border-radius: 30px; padding: 10px 18px; font-size: 14px; color: #444; cursor: pointer; border: none; font-family: inherit; transition: all 0.2s; margin: 5px; }
@@ -25,7 +27,7 @@
   section { padding: 60px 40px; max-width: 900px; margin: 0 auto; border-top: 1px solid #f0f0f0; }
   h2 { font-family: 'Lora', serif; font-size: 22px; color: #222; margin-bottom: 24px; }
   .recipe-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 12px; }
-  .recipe-card-btn { background: #fafafa; border: 1px solid #eee; border-radius: 12px; padding: 20px; cursor: pointer; text-align: left; transition: all 0.2s; width: 100%; text-decoration: none; color: inherit; display: block; }
+  .recipe-card-btn { background: #fafafa; border: 1px solid #eee; border-radius: 12px; padding: 20px; cursor: pointer; text-align: left; transition: all 0.2s; width: 100%; }
   .recipe-card-btn:hover { background: #222; color: #fff; transform: translateY(-3px); }
   .rc-emoji { font-size: 32px; margin-bottom: 10px; }
   .rc-name { font-weight: 600; font-size: 15px; margin-bottom: 6px; }
@@ -41,6 +43,7 @@
   .step-text { font-size: 14px; color: #555; line-height: 1.7; }
   .tip-box { background: #fffbf0; border: 1px solid #f0e6c0; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #666; margin-top: 20px; }
   footer { text-align: center; padding: 40px; color: #bbb; font-size: 12px; border-top: 1px solid #eee; }
+  input[type="file"] { display: none; }
 </style>
 </head>
 <body>
@@ -51,19 +54,17 @@
     <li><button onclick="showMain()">Home</button></li>
     <li><button onclick="openInterest('stories')">Stories</button></li>
     <li><button onclick="openInterest('cooking')">Cooking</button></li>
-    <li><button onclick="openInterest('tech')">Tech</button></li>
   </ul>
 </nav>
 
 <div id="mainPage" class="page active">
   <div class="hero">
-    <div class="hero-img">🌸</div>
+    <div class="hero-img" onclick="document.getElementById('heroInput').click()">🌸<div class="overlay">+ Photo</div><input type="file" id="heroInput" accept="image/*" onchange="setHero(event)"></div>
     <h1>Hi, I'm Priyanka 👋</h1>
-    <p>A keeper of stories, a food lover, and a tech enthusiast.</p>
+    <p>A keeper of stories and a lover of home-cooked flavors.</p>
     <div>
       <button class="pill" onclick="openInterest('stories')">📖 Tara's Stories</button>
       <button class="pill" onclick="openInterest('cooking')">🍳 Food & Recipes</button>
-      <button class="pill" onclick="openInterest('tech')">💻 Tech Portfolio</button>
     </div>
   </div>
   <section id="interests">
@@ -71,6 +72,7 @@
     <div class="interest-list">
       <button class="pill" onclick="openInterest('stories')"><span>📖</span> Tara's Stories</button>
       <button class="pill" onclick="openInterest('cooking')"><span>🍳</span> Cooking</button>
+      <button class="pill" onclick="openInterest('photography')"><span>📸</span> Photography</button>
       <button class="pill" onclick="openInterest('tech')"><span>💻</span> Tech</button>
     </div>
   </section>
@@ -132,12 +134,12 @@ const recipes = {
     ingredients:[{group:null, items:['Vanilla cake','Apricot jam','Custard','Condensed milk','Cream']}],
     steps:['Bake vanilla cake and slice in half.','Layer jam, cake, soak with condensed milk mixture.','Add custard layer and repeat.','Top with whipped cream and chill.']
   },
-  ride: { emoji:'🚲', name:'The Morning Ride', isStory:true, body:'Tara was a bright and curious little girl who loved trying new things. One evening, while watching children ride their bicycles in the park, she turned to her grandfather with sparkling eyes. “Grandpa, I want to learn how to ride a bike!” she said excitedly. Her grandfather smiled warmly. “Of course, Tara. I will teach you tomorrow morning.” As soon as the first light of morning appeared, Tara jumped out of bed. Her grandfather encouraged her, saying, “Riding a bike is very easy, Tara... You’ll be able to ride in no time.” At first, she wobbled a little, but she remembered his words—balance and keep moving. Slowly, she began to ride. “I’m doing it! Grandpa, I’m doing it!” she shouted with happiness. Tara realized that courage comes from trying, even when others are afraid.' },
-  hands: { emoji:'👐', name:'Soft Hands of Love', isStory:true, body:'What Tara remembered the most were her grandmother’s hands. They were soft—so soft that Tara used to think they felt like butter, like smooth feathers brushing against her skin. Whenever her grandmother held her, Tara felt comforted. Tara realized that it wasn’t just the softness she remembered. It was her grandmother’s kindness, her strength, and the way she made everything feel better. To Tara, her grandmother was the softest soul she had ever known—someone whose love would stay with her forever.' },
-  festivals: { emoji:'🃏', name:'The Joy of Festivals', isStory:true, body:'Tara always looked forward to festivals more than anything else. Every festival felt special because the whole family would gather together at home. The house would be full of life—laughter, delicious food, and happy conversations everywhere. Her favorite part was when everyone sat together to play cards. All the family members—young and old—would join in. They would laugh, tease each other, and sometimes pretend to get upset when they lost. But in the end, it was never about winning or losing. It was about being together. Those festival days became unforgettable memories for Tara.' },
-  diwali: { emoji:'🪔', name:'The Lights of Diwali', isStory:true, body:'Diwali was always Tara’s favorite festival. One year, while lighting a cracker, it suddenly burst too close and burned Tara’s hand. It hurt a lot, and she got very scared. From that day on, Tara was afraid to light big crackers. But Tara still loved the festival. She found a new way to celebrate. She began decorating her home with beautiful lights and diyas. The gentle lights made her feel peaceful and happy again. Tara realized that Diwali was not just about loud crackers, but about light, love, and togetherness.' },
-  birthdays: { emoji:'🎂', name:'Special Birthdays', isStory:true, body:'Tara always loved her birthdays. Every year, her father made them incredibly special. The house would be full of decorations, lights, and laughter. Tara loved how everything felt like a celebration just for her. She felt so special—like a little princess in her own palace. Her parents always took such good care of her, making sure every little detail was perfect. Every birthday was a memory of warmth, care, and happiness that Tara would always treasure.' },
-  food_story: { emoji:'🥘', name:'Mother’s Homemade Food', isStory:true, body:'Tara always loved her mother’s homemade food. Her mother was an amazing cook, able to make every dish taste perfect. When Tara went to the hostel for higher studies, she began to miss her mother’s food a lot. But her mother made sure Tara never felt too far from home. Every week, she would pack homemade meals and send them to Tara. Opening the parcels, Tara could almost feel her mother’s love in every bite. Her mother’s cooking was a warm, loving connection that kept her heart happy.' }
+  ride: { emoji:'🚲', name:'The Morning Ride', isStory:true, body:'Tara was a bright and curious little girl who loved trying new things... courage comes from trying, even when others are afraid.' },
+  hands: { emoji:'👐', name:'Soft Hands of Love', isStory:true, body:'What Tara remembered the most were her grandmother’s hands. They were soft like butter... a love that stays forever.' },
+  festivals: { emoji:'🃏', name:'The Joy of Festivals', isStory:true, body:'Tara looked forward to festivals. The whole family would play cards, laugh, and tease each other. It was always about togetherness.' },
+  diwali: { emoji:'🪔', name:'The Lights of Diwali', isStory:true, body:'After a cracker accident, Tara found beauty in the soft glow of diyas. Diwali was about light and love, not just noise.' },
+  birthdays: { emoji:'🎂', name:'Special Birthdays', isStory:true, body:'Every year, her father made her birthday magical with fairy lights and love. She felt like a princess.' },
+  food_story: { emoji:'🥘', name:'Mother’s Homemade Food', isStory:true, body:'Even at a hostel, Tara felt her mother’s love through packed meals. A warm connection in every bite.' }
 };
 
 const interests = {
@@ -149,10 +151,6 @@ const interests = {
     {key:'veg_pulav', emoji:'🥗', name:'Veg Pulav'}, {key:'chicken_kebabs', emoji:'🍢', name:'Chicken Kebabs'},
     {key:'shrimp_pulav', emoji:'🍤', name:'Shrimp Pulav'}, {key:'apricot_delight', emoji:'🍑', name:'Apricot Delight'},
     {key:'cucumber_sauce', emoji:'🥒', name:'Cucumber Sauce'}, {key:'tomato_sauce', emoji:'🍅', name:'Tomato Sauce'}
-  ]},
-  tech: { title: "Tech Portfolio", desc: 'Professional profiles and projects.', items: [
-    {key:'linkedin', emoji:'💼', name:'LinkedIn', isLink:true, url:'https://www.linkedin.com/in/priyanka-boppana-338800203/'},
-    {key:'resume', emoji:'📄', name:'Resume', isLink:true, url:'https://priyanka-boppana.github.io/myResume/'}
   ]}
 };
 
@@ -160,20 +158,12 @@ function openInterest(cat) {
   const d = interests[cat];
   document.getElementById('iTitle').textContent = d.title;
   document.getElementById('iDesc').textContent = d.desc;
-  document.getElementById('iContent').innerHTML = d.items.map(item => {
-    if(item.isLink) {
-        return `<a href="${item.url}" target="_blank" class="recipe-card-btn">
-            <div class="rc-emoji">${item.emoji}</div>
-            <div class="rc-name">${item.name}</div>
-            <div class="rc-desc">View external profile →</div>
-        </a>`;
-    }
-    return `<button class="recipe-card-btn" onclick="openDetail('${item.key}', '${cat}')">
+  document.getElementById('iContent').innerHTML = d.items.map(item => `
+    <button class="recipe-card-btn" onclick="openDetail('${item.key}', '${cat}')">
       <div class="rc-emoji">${item.emoji}</div>
       <div class="rc-name">${item.name}</div>
       <div class="rc-desc">${recipes[item.key].desc}</div>
-    </button>`;
-  }).join('');
+    </button>`).join('');
   showPage('interestPage');
 }
 
@@ -206,6 +196,11 @@ function showPage(id) {
 }
 
 function showMain() { showPage('mainPage'); }
+function setHero(e) {
+  const reader = new FileReader();
+  reader.onload = ev => document.querySelector('.hero-img').innerHTML = `<img src="${ev.target.result}"><div class="overlay">Change</div><input type="file" id="heroInput" accept="image/*" onchange="setHero(event)">`;
+  reader.readAsDataURL(e.target.files[0]);
+}
 </script>
 </body>
 </html>
