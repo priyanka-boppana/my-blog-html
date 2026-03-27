@@ -74,9 +74,9 @@
   .method-step { display: flex; gap: 6px; font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 4px; }
   .method-step::before { content: '→'; color: #bbb; flex-shrink: 0; }
   .tip-box { background: #fffbf0; border: 1px solid #f0e6c0; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #666; margin-top: 20px; line-height: 1.6; }
-  .shop-links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
-  .shop-link { background: #fff7ed; border: 1px solid #fddcb5; color: #c4622d; padding: 7px 16px; border-radius: 20px; font-size: 12px; font-weight: 500; text-decoration: none; transition: all 0.2s; }
-  .shop-link:hover { background: #c4622d; color: #fff; }
+  .shop-links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; margin-top: 20px; }
+  .shop-link { background: #f0f7ff; border: 1px solid #cce3ff; color: #0077b5; padding: 10px 20px; border-radius: 25px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+  .shop-link:hover { background: #0077b5; color: #fff; transform: translateY(-2px); }
   footer { text-align: center; padding: 28px; color: #ccc; font-size: 13px; border-top: 1px solid #eee; }
   input[type="file"] { display: none; }
   @media (max-width: 600px) {
@@ -145,6 +145,7 @@
     <h1 id="iTitle"></h1>
     <p id="iDesc"></p>
     <p id="iDesc2"></p>
+    <div id="iLinks" class="shop-links"></div>
     <div id="iRecipes"></div>
     <div class="tags-row" id="iTags"></div>
   </div>
@@ -194,6 +195,41 @@ const recipes = {
     methods:[{label:'🍰 Assembly',steps:['Soak is key for moistness.','Chilling blends the flavors.']}],
     tip:'💡 Even better the next day!'
   },
+  veg_pulav: {
+    emoji:'🥗', name:'Instant Pot Veg Pulav', desc:'A quick, fragrant, and healthy one-pot vegetable rice.', time:'25 min', servings:'3-4 servings',
+    ingredients:[
+      {group:'Main', items:['Basmati rice – 3 cups (washed)','Carrots – ½ cup (chopped)','Peas – ½ cup','Potato – 1 (diced)','Onion – ¼ (thinly sliced)','Green chillies – 10 (slit)']},
+      {group:'Whole Spices (4 each)', items:['Cloves','Elaichi (Cardamom)','Cinnamon','Bay leaf']},
+      {group:'Seasoning & Herbs', items:['Ginger-garlic paste – 1 tbsp','Dhaniya powder – 1 tsp','Garam masala – 1 tsp','Salt – to taste','Ghee – 1 tbsp','Mint & Coriander leaves – handful']}
+    ],
+    steps:['Turn Instant Pot to Sauté mode and add oil.','Sauté the whole biryani spices until aromatic.','Add onions, potatoes, carrots, peas, and green chillies.','Add ginger-garlic paste and sauté for 2 minutes.','Stir in dhaniya powder, salt, garam masala, and fresh herbs.','Add the washed rice and sauté gently for 1 minute. Add 1 spoon of ghee.','Add 4.5 cups of water (1:1.5 ratio) and mix gently.','Cancel Sauté. CRITICAL: Unplug or remove the inner pot for 5 minutes to cool the bottom coil (prevents burning).','Place pot back in, close lid, and set to Pressure Cook — High for 5 minutes.','Natural Release for 5 minutes, then quick release.'],
+    methods:[{label:'⚡ Instant Pot',steps:['Sauté Mode → High','Pressure Cook → 5 mins','NR → 5 mins → Quick Release']}],
+    tip:'💡 Cooling the pot for 5 mins before pressure cooking prevents the "Burn" notice!'
+  },
+  cucumber_sauce: {
+    emoji:'🥒', name:'Creamy Cucumber Sauce', desc:'Refreshing and creamy dip, perfect for kebabs or sandwiches.', time:'5 min', servings:'1 cup',
+    ingredients:[
+      {group:null, items:['Cucumber pulp – 1 cup (grated & squeezed)','Mayonnaise – 1 tbsp','Thick curd / Greek yogurt – ½ cup','Lemon juice – 1-2 tsp','Fresh parsley – 1 tbsp (chopped)','Black pepper – ¼ tsp','Salt – to taste']}
+    ],
+    steps:['In a bowl, combine the cucumber pulp, mayonnaise, and curd.','Add lemon juice, chopped parsley, pepper, and salt.','Whisk until smooth and creamy.','Chill in the fridge for 15–20 minutes before serving.'],
+    methods:[{label:'❄️ Serving',steps:['Chill for 20 mins','Serve as dip or spread']}]
+  },
+  tomato_sauce: {
+    emoji:'🍅', name:'No-Cook Tomato Garlic Sauce', desc:'A fresh, raw, and zesty sauce for wraps, dosas, or snacks.', time:'5 min', servings:'1 cup',
+    ingredients:[
+      {group:null, items:['Ripe tomatoes – 2 (chopped)','Garlic cloves – 2-3','Chili flakes – ½ tsp','Red chili powder – ¼ tsp','Dhaniya powder – ½ tsp','Salt – to taste','Oil – 1-2 tbsp','Lemon juice – 1 tsp (optional)']}
+    ],
+    steps:['Add chopped tomatoes and garlic to a blender.','Add chili flakes, powder, dhaniya powder, salt, and oil.','Blend until completely smooth.','Taste and adjust seasoning.','Refrigerate for 20-30 minutes to let flavors meld.'],
+    methods:[{label:'🌪️ Quick Prep',steps:['Blend all raw ingredients','No cooking required','Chill before serving']}]
+  },
+  chicken_kebabs: {
+    emoji:'🍢', name:'Ground Chicken Kebabs', desc:'Simple, healthy, and flavorful baked chicken starters.', time:'30 min', servings:'3-4 servings',
+    ingredients:[
+      {group:null, items:['Chicken breast','Onion','Green Chilli','Cilantro','Chili powder','Salt','Dhaniya powder','Garam Masala']}
+    ],
+    steps:['Place all ingredients into a food processor/blender.','Pulse until the mixture is finely grounded and well combined.','Shape the mixture into kebabs or patties.','Place on a baking tray and bake at 400°F (200°C) until golden and cooked through (approx 15-20 mins).'],
+    methods:[{label:' Oven / Air Fryer',steps:['Process all ingredients','Shape into kebabs','Bake until golden']}]
+  },
   tara_ride: {
     emoji:'🚲', name:'The Morning Ride', desc:'A tale of learning courage and trying new things.', body: `<div class="story-content"><p>Tara was a bright and curious little girl who loved trying new things. One evening, while watching children ride their bicycles in the park, she turned to her grandfather with sparkling eyes.</p><p>“Grandpa, I want to learn how to ride a bike!” she said excitedly. Her grandfather smiled warmly. “Of course, Tara. I will teach you tomorrow morning.”</p><p>As soon as the first light of morning appeared, Tara jumped out of bed. Her grandfather encouraged her, saying, “Riding a bike is very easy, Tara... You’ll be able to ride in no time.”</p><p>At first, she wobbled a little, but she remembered his words—balance and keep moving. Slowly, she began to ride. “I’m doing it! Grandpa, I’m doing it!” she shouted with happiness. Tara realized that courage comes from trying, even when others are afraid.</p></div>`
   },
@@ -227,12 +263,24 @@ const interests = {
     ]
   },
   cooking: {
-    icon: '🍳', title: 'Cooking', desc: 'My favorite kitchen experiments.', desc2: 'Recipes that bring comfort and joy to the table.', tags: ['Indian', 'Baking', 'One-Pot'],
+    icon: '🍳', title: 'Cooking', desc: 'My favorite kitchen experiments.', desc2: 'Recipes that bring comfort and joy to the table.', tags: ['Indian', 'Instant Pot', 'Healthy'],
     items: [
+      {key:'veg_pulav', emoji:'🥗', name:'IP Veg Pulav', desc:'Quick one-pot rice.'},
+      {key:'chicken_kebabs', emoji:'🍢', name:'Chicken Kebabs', desc:'Baked & healthy.'},
       {key:'shrimp_pulav', emoji:'🍤', name:'Shrimp Pulav', desc:'Fragrant rice & shrimp.'},
       {key:'chicken_biryani', emoji:'🍗', name:'Chicken Biryani', desc:'Juicy & aromatic.'},
+      {key:'cucumber_sauce', emoji:'🥒', name:'Cucumber Sauce', desc:'Creamy refreshing dip.'},
+      {key:'tomato_sauce', emoji:'🍅', name:'Tomato Sauce', desc:'Zesty raw dip.'},
       {key:'apricot_delight', emoji:'🍑', name:'Apricot Delight', desc:'Sweet layered treat.'}
     ]
+  },
+  tech: {
+    icon: '💻', title: 'Tech', desc: 'My professional journey & skills.', desc2: 'Exploring the world through code and continuous learning.', tags: ['Software', 'React', 'LinkedIn'],
+    links: [
+      { label: 'LinkedIn Profile', url: 'https://www.linkedin.com/in/priyanka-boppana-338800203/' },
+      { label: 'My Resume', url: 'https://priyanka-boppana.github.io/myResume/' }
+    ],
+    items: []
   }
 };
 
@@ -243,6 +291,17 @@ function openInterest(key) {
   document.getElementById('iDesc').textContent = d.desc;
   document.getElementById('iDesc2').textContent = d.desc2;
   document.getElementById('iTags').innerHTML = d.tags.map(t=>`<span class="tag">${t}</span>`).join('');
+  
+  // Handle Tech Links
+  const linksBox = document.getElementById('iLinks');
+  if(d.links) {
+    linksBox.innerHTML = d.links.map(l => `<a href="${l.url}" target="_blank" class="shop-link">🔗 ${l.label}</a>`).join('');
+    linksBox.style.display = 'flex';
+  } else {
+    linksBox.style.display = 'none';
+  }
+
+  // Handle Recipe Cards
   document.getElementById('iRecipes').innerHTML = `
     <div class="recipe-cards">
       ${d.items.map(r=>`
@@ -267,10 +326,14 @@ function openRecipe(key, parentKey) {
     html = r.body;
   } else {
     html += `<span class="section-label">Ingredients</span><div class="ingredients-box">`;
-    r.ingredients.forEach(g => { g.items.forEach(item => { html += `<div class="ing-item">${item}</div>`; }); });
+    r.ingredients.forEach(g => { 
+        if(g.group) html += `<div class="ing-group-title">${g.group}</div>`;
+        g.items.forEach(item => { html += `<div class="ing-item">${item}</div>`; }); 
+    });
     html += `</div><span class="section-label">Steps</span><div class="steps-list">`;
     r.steps.forEach((s,i) => { html += `<div class="step-item"><div class="step-num">${i+1}</div><div class="step-text">${s}</div></div>`; });
     html += `</div>`;
+    if(r.tip) html += `<div class="tip-box">${r.tip}</div>`;
   }
   document.getElementById('rBody').innerHTML = html;
   document.getElementById('interestPage').classList.remove('active');
