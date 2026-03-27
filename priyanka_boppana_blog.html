@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priyanka Boppana</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #fff; color: #333; }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #eee; position: sticky; top: 0; background: #fff; z-index: 10; }
+  .nav-name { font-family: 'Lora', serif; font-size: 1.2rem; color: #222; cursor: pointer; }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a { text-decoration: none; color: #888; font-size: 0.85rem; cursor: pointer; transition: color 0.2s; }
+  .nav-links a:hover { color: #222; }
+  .page { display: none; }
+  .page.active { display: block; }
+  .hero { text-align: center; padding: 80px 20px 60px; }
+  .hero-img { width: 120px; height: 120px; border-radius: 50%; background: #f0f0f0; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; overflow: hidden; position: relative; cursor: pointer; border: 3px solid #eee; }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; border-radius: 50%; }
+  .hero-img .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 0.7rem; }
+  .hero-img:hover .overlay { display: flex; }
+  .hero h1 { font-family: 'Lora', serif; font-size: 2rem; color: #222; margin-bottom: 10px; }
+  .hero p { color: #888; font-size: 0.95rem; max-width: 400px; margin: 0 auto 24px; line-height: 1.7; }
+  .hero-tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .hero-tag { background: #f5f5f5; color: #555; padding: 5px 14px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
+  .hero-tag:hover { background: #222; color: #fff; }
+  section { padding: 60px 40px; max-width: 900px; margin: 0 auto; scroll-margin-top: 70px; }
+  section + section { border-top: 1px solid #f0f0f0; }
+  h2 { font-family: 'Lora', serif; font-size: 1.4rem; color: #222; margin-bottom: 24px; }
+  .interest-list { display: flex; flex-wrap: wrap; gap: 12px; }
+  .interest-pill { display: flex; align-items: center; gap: 8px; background: #f5f5f5; border-radius: 30px; padding: 10px 18px; font-size: 0.85rem; color: #444; cursor: pointer; transition: all 0.2s; }
+  .interest-pill:hover { background: #222; color: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  .interest-pill span { font-size: 1.1rem; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .gallery-slot { aspect-ratio: 1; background: #f5f5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 6px; border: 2px dashed #ddd; cursor: pointer; position: relative; overflow: hidden; transition: border-color 0.2s; }
+  .gallery-slot:hover { border-color: #aaa; }
+  .gallery-slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+  .gallery-slot .icon { font-size: 1.4rem; opacity: 0.3; position: relative; z-index: 1; }
+  .gallery-slot label { font-size: 0.72rem; color: #aaa; cursor: pointer; position: relative; z-index: 1; }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; background: #f5f5f5; color: #555; border: none; cursor: pointer; padding: 8px 16px; border-radius: 20px; font-size: 0.82rem; font-family: 'Inter', sans-serif; margin-bottom: 40px; transition: all 0.2s; }
+  .back-btn:hover { background: #222; color: #fff; }
+  .interest-page { padding: 60px 40px; max-width: 700px; margin: 0 auto; }
+  .interest-page h1 { font-family: 'Lora', serif; font-size: 2rem; color: #222; margin-bottom: 12px; }
+  .interest-page .icon-big { font-size: 3rem; margin-bottom: 16px; display: block; }
+  .interest-page p { color: #777; font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px; }
+  .interest-page .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .interest-page .tag { background: #f5f5f5; color: #555; padding: 4px 14px; border-radius: 20px; font-size: 0.78rem; }
+  .recipe-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-top: 28px; }
+  .recipe-card-btn { background: #fafafa; border: 1px solid #eee; border-radius: 12px; padding: 18px; cursor: pointer; text-align: left; transition: all 0.2s; font-family: 'Inter', sans-serif; width: 100%; }
+  .recipe-card-btn:hover { background: #222; color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
+  .recipe-card-btn:hover .rc-desc, .recipe-card-btn:hover .rc-meta { color: #bbb; }
+  .rc-emoji { font-size: 2rem; margin-bottom: 10px; }
+  .rc-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+  .rc-desc { font-size: 0.8rem; color: #888; line-height: 1.5; margin-bottom: 8px; }
+  .rc-meta { font-size: 0.73rem; color: #aaa; }
+  .recipe-page { padding: 60px 40px; max-width: 720px; margin: 0 auto; }
+  .recipe-page h1 { font-family: 'Lora', serif; font-size: 2rem; color: #222; margin-bottom: 8px; }
+  .emoji-big { font-size: 3rem; margin-bottom: 16px; display: block; }
+  .recipe-meta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+  .meta-chip { background: #f5f5f5; padding: 5px 14px; border-radius: 20px; font-size: 0.78rem; color: #555; }
+  .section-label { font-weight: 600; font-size: 0.82rem; color: #222; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 12px; margin-top: 28px; }
+  .ingredients-box { background: #fafafa; border-radius: 12px; padding: 20px 24px; border: 1px solid #eee; }
+  .ingredients-box ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .ingredients-box li { font-size: 0.88rem; color: #555; display: flex; gap: 8px; line-height: 1.5; }
+  .ingredients-box li::before { content: '•'; color: #ccc; flex-shrink: 0; }
+  .ing-group-title { font-size: 0.75rem; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 0.07em; padding-top: 10px; }
+  .ing-group-title::before { content: '' !important; }
+  .steps-list { display: flex; flex-direction: column; gap: 12px; }
+  .step-item { display: flex; gap: 14px; align-items: flex-start; }
+  .step-num { width: 28px; height: 28px; background: #222; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .step-text { font-size: 0.88rem; color: #555; line-height: 1.7; }
+  .method-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .method-card { background: #fafafa; border-radius: 12px; padding: 18px; border: 1px solid #eee; }
+  .method-card h4 { font-size: 0.9rem; font-weight: 600; color: #222; margin-bottom: 10px; }
+  .method-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .method-card li { font-size: 0.83rem; color: #666; display: flex; gap: 6px; line-height: 1.5; }
+  .method-card li::before { content: '→'; color: #bbb; flex-shrink: 0; }
+  .tip-box { background: #fffbf0; border: 1px solid #f0e6c0; border-radius: 10px; padding: 14px 18px; font-size: 0.83rem; color: #666; margin-top: 20px; line-height: 1.6; }
+  footer { text-align: center; padding: 30px; color: #bbb; font-size: 0.8rem; border-top: 1px solid #eee; }
+  input[type="file"] { display: none; }
+  @media (max-width: 600px) {
+    nav { padding: 16px 20px; }
+    section, .interest-page, .recipe-page { padding: 40px 20px; }
+    .gallery-grid { grid-template-columns: repeat(2,1fr); }
+    .method-cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name" onclick="showMain()">Priyanka Boppana</div>
+  <ul class="nav-links">
+    <li><a onclick="showMain(); setTimeout(()=>document.getElementById('interests').scrollIntoView({behavior:'smooth'}),50)">Interests</a></li>
+    <li><a onclick="showMain(); setTimeout(()=>document.getElementById('gallery').scrollIntoView({behavior:'smooth'}),50)">Photos</a></li>
+  </ul>
+</nav>
+
+<div id="mainPage" class="page active">
+  <div class="hero">
+    <div class="hero-img" onclick="document.getElementById('heroInput').click()">
+      🌸<div class="overlay">+ Photo</div>
+      <input type="file" id="heroInput" accept="image/*" onchange="setHero(event)">
+    </div>
+    <h1>Hi, I'm Priyanka 👋</h1>
+    <p>A food lover, home cook, and curious soul. Welcome to my little space on the internet.</p>
+    <div class="hero-tags">
+      <span class="hero-tag" onclick="openInterest('cooking')">🍳 Food & Recipes</span>
+      <span class="hero-tag" onclick="openInterest('gardening')">🌱 Gardening</span>
+      <span class="hero-tag" onclick="openInterest('tech')">💻 Tech</span>
+      <span class="hero-tag" onclick="openInterest('photography')">📸 Photography</span>
+    </div>
+  </div>
+  <section id="interests">
+    <h2>💛 My Interests</h2>
+    <div class="interest-list">
+      <div class="interest-pill" onclick="openInterest('cooking')"><span>🍳</span> Cooking</div>
+      <div class="interest-pill" onclick="openInterest('reading')"><span>📚</span> Reading</div>
+      <div class="interest-pill" onclick="openInterest('travel')"><span>✈️</span> Travel</div>
+      <div class="interest-pill" onclick="openInterest('photography')"><span>📸</span> Photography</div>
+      <div class="interest-pill" onclick="openInterest('gardening')"><span>🌱</span> Gardening</div>
+      <div class="interest-pill" onclick="openInterest('tech')"><span>💻</span> Tech</div>
+      <div class="interest-pill" onclick="openInterest('music')"><span>🎵</span> Music</div>
+      <div class="interest-pill" onclick="openInterest('art')"><span>🎨</span> Art & Crafts</div>
+      <div class="interest-pill" onclick="openInterest('yoga')"><span>🧘</span> Yoga</div>
+    </div>
+  </section>
+  <section id="gallery">
+    <h2>📷 My Photos</h2>
+    <div class="gallery-grid">
+      <div class="gallery-slot" id="g0" onclick="document.getElementById('gi0').click()"><div class="icon">🖼️</div><label>Click to add</label><input type="file" id="gi0" accept="image/*" onchange="addPhoto(event,0)"></div>
+      <div class="gallery-slot" id="g1" onclick="document.getElementById('gi1').click()"><div class="icon">🖼️</div><label>Click to add</label><input type="file" id="gi1" accept="image/*" onchange="addPhoto(event,1)"></div>
+      <div class="gallery-slot" id="g2" onclick="document.getElementById('gi2').click()"><div class="icon">🖼️</div><label>Click to add</label><input type="file" id="gi2" accept="image/*" onchange="addPhoto(event,2)"></div>
+      <div class="gallery-slot" id="g3" onclick="document.getElementById('gi3').click()"><div class="icon">🖼️</div><label>Click to add</label><input type="file" id="gi3" accept="image/*" onchange="addPhoto(event,3)"></div>
+      <div class="gallery-slot" id="g4" onclick="document.getElementById('gi4').click()"><div class="icon">🖼️</div><label>Click to add</label><input type="file" id="gi4" accept="image/*" onchange="addPhoto(event,4)"></div>
+      <div class="gallery-slot" id="g5" onclick="document.getElementById('gi5').click()"><div class="icon">🖼️</div><label>Click to add</label><input type="file" id="gi5" accept="image/*" onchange="addPhoto(event,5)"></div>
+    </div>
+  </section>
+  <footer>© 2026 Priyanka Boppana · Made with ♥</footer>
+</div>
+
+<div id="interestPage" class="page">
+  <div class="interest-page">
+    <button class="back-btn" onclick="showMain()">← Back</button>
+    <span class="icon-big" id="iIcon"></span>
+    <h1 id="iTitle"></h1>
+    <p id="iDesc"></p>
+    <p id="iDesc2"></p>
+    <div id="iRecipes"></div>
+    <div class="tags" id="iTags"></div>
+  </div>
+  <footer>© 2026 Priyanka Boppana · Made with ♥</footer>
+</div>
+
+<div id="recipePage" class="page">
+  <div class="recipe-page">
+    <button class="back-btn" id="recipeBackBtn">← Back to Cooking</button>
+    <span class="emoji-big" id="rEmoji"></span>
+    <h1 id="rTitle"></h1>
+    <div class="recipe-meta-row" id="rMeta"></div>
+    <div id="rBody"></div>
+  </div>
+  <footer>© 2026 Priyanka Boppana · Made with ♥</footer>
+</div>
+
+<script>
+const recipes = {
+  shrimp_pulav: {
+    emoji:'🍤',name:'Shrimp Pulav',desc:'Fragrant one-pot rice with tender shrimp & biryani spices.',time:'45 min',servings:'4 servings',
+    ingredients:[
+      {group:null,items:['Shrimp – cleaned & deveined','Onions – thinly sliced','Green chillies – slit or chopped','Ginger–garlic paste']},
+      {group:'Whole Biryani Spices',items:['Bay leaf','Cloves','Cardamom','Cinnamon','Star anise']},
+      {group:'Spices & Seasoning',items:['Red chilli powder (Karam)','Salt','Coriander powder (Dhaniya)','Garam masala','Oil']},
+      {group:'Other',items:['Rice – washed & soaked 20–30 min','Fresh coriander leaves – chopped','Fresh mint leaves – chopped']}
+    ],
+    steps:['Wash and soak the rice for at least 20–30 minutes. Chop coriander and mint; keep aside.','Heat oil in a pan or pressure cooker.','Add whole biryani spices and sauté for 1 minute until aromatic.','Add sliced onions and green chillies. Sauté for 2 minutes until softened.','Add shrimp, then add red chilli powder, salt, ginger-garlic paste, coriander powder, and garam masala.','Cook for about 5 minutes until shrimp looks partially cooked.','Add the soaked, drained rice.','Add a handful of chopped coriander and mint directly into the pot.','Add water in a 1 : 1.5 ratio (1 cup rice → 1.5 cups water). Mix gently. Taste and adjust salt.'],
+    methods:[{label:'🔥 Stovetop Pressure Cooker',steps:['Heat at medium-high → 1 whistle.','Reduce to low and cook 5 minutes.','Turn off and let pressure release naturally.']},{label:'⚡ Instant Pot',steps:['Pressure Cook → High → 5 minutes.','Natural Release for 5 minutes.','Then quick release.']}],
+    tip:'💡 Check for salt in the water before sealing and adjust if needed.'
+  },
+  chicken_biryani: {
+    emoji:'🍗',name:'Chicken Biryani',desc:'Juicy fried chicken layered with fragrant biryani rice, sealed and dum-cooked to perfection.',time:'90 min',servings:'5–6 servings',
+    ingredients:[
+      {group:'Chicken & Marinade',items:['Boneless chicken pieces','Salt – to taste','Red chilli powder (Karam)','Coriander powder (Dhaniya powder)','Garam masala','Turmeric','Ginger-garlic paste','Lemon juice','Corn flour','Egg – 1']},
+      {group:'Curd Gravy',items:['Curd (yogurt)','Red chilli powder (Karam)','Salt','Coriander powder (Dhaniya powder)','Garam masala','Turmeric','Oil – 2 spoons','Fried onions','Red chillies','Curry leaves']},
+      {group:'Rice',items:['Biryani rice','Whole biryani spices (bay leaf, cloves, cardamom, cinnamon)','Green chillies','Fresh coriander leaves','Fresh mint leaves','Ginger-garlic paste']},
+      {group:'Dum (Final Layer)',items:['Fried onions','Fresh coriander – chopped','Ghee – a generous drizzle','Water – ½ glass']}
+    ],
+    steps:['Marinate boneless chicken with salt, red chilli powder, coriander powder, garam masala, turmeric, ginger-garlic paste, lemon juice, corn flour, and egg. Mix well and rest for at least 30 minutes.','Deep fry the marinated chicken until golden and cooked through. Set aside. (Air fryer works too — spray oil generously and air fry until done.)','In a bowl, mix curd with red chilli powder, salt, coriander powder, garam masala, and turmeric. Stir well.','Heat 2 spoons of oil in a pan. Add fried onions, red chillies, and curry leaves. Sauté briefly.','Add the curd mixture to the pan and cook on medium heat, stirring, until it thickens and comes together well.','Add the fried chicken into the curd gravy. Mix gently to coat evenly. Keep aside.','Boil biryani rice with whole spices, green chillies, coriander, mint, and a little ginger-garlic paste. Cook to 80% done — rice should still have a slight bite. Drain.','In a large biryani pot, spread the chicken-curd mixture as the first layer.','Add the 80% cooked rice on top. Layer with fried onions and chopped coriander.','Pour ½ glass of water and drizzle ghee generously over the top.','Seal the pot tightly with aluminium foil (and lid if available). Cook on medium flame for 10 minutes.','Turn off heat and rest for 5 minutes before opening. Gently mix from the sides and serve hot.'],
+    methods:[{label:'🔥 Stovetop Dum',steps:['Seal pot tightly with foil.','Cook on medium flame for 10 minutes.','Rest 5 minutes before opening.']},{label:'✈️ Air Fryer Option',steps:['Skip deep frying — use air fryer instead.','Spray oil generously on marinated chicken.','Air fry until golden and cooked through.']}],
+    tip:'💡 Cooking rice to exactly 80% is the secret — it finishes during dum and stays fluffy, not mushy.'
+  }
+};
+
+const interests = {
+  cooking:{icon:'🍳',title:'Cooking',desc:'Cooking is my creative outlet and my love language. I love experimenting with flavors from around the world — whether it\'s a slow-simmered curry, a quick stir-fry, or a decadent dessert.',desc2:'My kitchen is my happy place. I find joy in the process — chopping, tasting, adjusting — and even more joy in sharing the final result with people I love.',tags:['Indian Cuisine','Baking','Comfort Food','Meal Prep','Spices'],
+    recipes:[
+      {key:'shrimp_pulav',emoji:'🍤',name:'Shrimp Pulav',desc:'Fragrant one-pot rice with tender shrimp & biryani spices.',time:'45 min',servings:'4 servings'},
+      {key:'chicken_biryani',emoji:'🍗',name:'Chicken Biryani',desc:'Juicy fried chicken layered with fragrant rice, dum-cooked to perfection.',time:'90 min',servings:'5–6 servings'},
+      {key:null,emoji:'🍛',name:'Homemade Curry',desc:'Rich, aromatic curry slow-cooked with fresh spices.',time:'45 min',servings:'4 servings'},
+      {key:null,emoji:'🥗',name:'Fresh Garden Salad',desc:'Crisp veggies with a zesty homemade dressing.',time:'15 min',servings:'2 servings'},
+      {key:null,emoji:'🍹',name:'Mango Lassi',desc:'Creamy mango & yogurt blend with cardamom.',time:'5 min',servings:'2 glasses'},
+      {key:null,emoji:'🎂',name:'Chocolate Cake',desc:'Moist layers with silky buttercream frosting.',time:'90 min',servings:'8 servings'},
+    ]},
+  reading:{icon:'📚',title:'Reading',desc:'Books have always been my escape. I love diving into gripping fiction, inspiring biographies, and self-help books.',desc2:'There\'s nothing better than a quiet afternoon with chai and a book that transports you somewhere new.',tags:['Fiction','Biographies','Self-Help','Mystery','Non-Fiction'],recipes:[]},
+  travel:{icon:'✈️',title:'Travel',desc:'Exploring new places, tasting local food, and meeting people from different cultures — travel is one of my greatest joys.',desc2:'My travel style is a mix of planning and spontaneity. I love hidden gems just as much as iconic landmarks.',tags:['Food Tourism','Culture','Nature','Road Trips','Adventure'],recipes:[]},
+  photography:{icon:'📸',title:'Photography',desc:'I love capturing everyday moments — the way light falls through a window, a perfectly plated dish, a candid smile.',desc2:'Food photography is a particular passion of mine, blending two of my favorite things.',tags:['Food Photography','Portraits','Nature','Lifestyle','Editing'],recipes:[]},
+  gardening:{icon:'🌱',title:'Gardening',desc:'There\'s something deeply satisfying about growing your own food. My garden is home to herbs, tomatoes, peppers, and seasonal greens.',desc2:'Gardening keeps me grounded and connected to the rhythm of the seasons. It\'s my daily dose of calm.',tags:['Herbs','Vegetables','Composting','Indoor Plants','Organic'],recipes:[]},
+  tech:{icon:'💻',title:'Tech',desc:'I\'m genuinely passionate about technology — from exploring new apps and tools to following the latest trends in AI and software.',desc2:'I love finding ways to use technology to make everyday life easier and more creative.',tags:['AI & ML','Productivity Tools','Gadgets','Web','Innovation'],recipes:[]},
+  music:{icon:'🎵',title:'Music',desc:'Music is the soundtrack of my life. From classical Indian music and Bollywood to lo-fi and jazz — it always sets the tone.',desc2:'Whether I\'m cooking, working, or winding down, there\'s always a playlist playing.',tags:['Bollywood','Lo-fi','Classical','Pop','Playlists'],recipes:[]},
+  art:{icon:'🎨',title:'Art & Crafts',desc:'From watercolor sketches to DIY home decor — making things by hand brings me so much joy.',desc2:'Art doesn\'t have to be perfect to be meaningful. I create for the process, not just the product.',tags:['Watercolor','DIY Decor','Doodling','Handmade Gifts','Collage'],recipes:[]},
+  yoga:{icon:'🧘',title:'Yoga',desc:'Yoga is my daily practice for both body and mind. It helps me start the morning with intention and stay present.',desc2:'I\'m also a big fan of meditation and breathwork — small habits with a big impact.',tags:['Morning Flow','Meditation','Breathwork','Flexibility','Mindfulness'],recipes:[]},
+};
+
+function openInterest(key){
+  const d=interests[key];
+  document.getElementById('iIcon').textContent=d.icon;
+  document.getElementById('iTitle').textContent=d.title;
+  document.getElementById('iDesc').textContent=d.desc;
+  document.getElementById('iDesc2').textContent=d.desc2;
+  document.getElementById('iTags').innerHTML=d.tags.map(t=>`<span class="tag">${t}</span>`).join('');
+  if(d.recipes&&d.recipes.length>0){
+    document.getElementById('iRecipes').innerHTML=`<div style="margin-top:32px"><div class="section-label">My Recipes</div><div class="recipe-cards">${d.recipes.map(r=>`<button class="recipe-card-btn" onclick="${r.key?`openRecipe('${r.key}')`:''}""><div class="rc-emoji">${r.emoji}</div><div class="rc-name">${r.name}</div><div class="rc-desc">${r.desc}</div><div class="rc-meta">⏱ ${r.time} · 👥 ${r.servings}</div></button>`).join('')}</div></div>`;
+  } else { document.getElementById('iRecipes').innerHTML=''; }
+  document.getElementById('recipeBackBtn').onclick=()=>openInterest(key);
+  document.getElementById('mainPage').classList.remove('active');
+  document.getElementById('interestPage').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function openRecipe(key){
+  const r=recipes[key];
+  document.getElementById('rEmoji').textContent=r.emoji;
+  document.getElementById('rTitle').textContent=r.name;
+  document.getElementById('rMeta').innerHTML=`<span class="meta-chip">⏱ ${r.time}</span><span class="meta-chip">👥 ${r.servings}</span>`;
+  let ingHtml=`<div class="section-label">Ingredients</div><div class="ingredients-box"><ul>`;
+  r.ingredients.forEach(g=>{if(g.group)ingHtml+=`<li class="ing-group-title">${g.group}</li>`;g.items.forEach(item=>{ingHtml+=`<li>${item}</li>`;});});
+  ingHtml+=`</ul></div>`;
+  let stepsHtml=`<div class="section-label">Step-by-Step Instructions</div><div class="steps-list">`;
+  r.steps.forEach((s,i)=>{stepsHtml+=`<div class="step-item"><div class="step-num">${i+1}</div><div class="step-text">${s}</div></div>`;});
+  stepsHtml+=`</div>`;
+  let methodHtml=`<div class="section-label" style="margin-top:28px">Cooking Methods</div><div class="method-cards">`;
+  r.methods.forEach(m=>{methodHtml+=`<div class="method-card"><h4>${m.label}</h4><ul>${m.steps.map(s=>`<li>${s}</li>`).join('')}</ul></div>`;});
+  methodHtml+=`</div>`;
+  if(r.tip)methodHtml+=`<div class="tip-box">${r.tip}</div>`;
+  document.getElementById('rBody').innerHTML=ingHtml+stepsHtml+methodHtml;
+  document.getElementById('interestPage').classList.remove('active');
+  document.getElementById('recipePage').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showMain(){
+  document.getElementById('interestPage').classList.remove('active');
+  document.getElementById('recipePage').classList.remove('active');
+  document.getElementById('mainPage').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function setHero(e){
+  const file=e.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=ev=>{const box=document.querySelector('.hero-img');box.innerHTML=`<img src="${ev.target.result}"><div class="overlay">Change</div><input type="file" id="heroInput" accept="image/*" onchange="setHero(event)">`;};
+  reader.readAsDataURL(file);
+}
+
+function addPhoto(e,idx){
+  const file=e.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=ev=>{const slot=document.getElementById('g'+idx);slot.style.border='none';slot.innerHTML=`<img src="${ev.target.result}"><input type="file" id="gi${idx}" accept="image/*" onchange="addPhoto(event,${idx})">`;};
+  reader.readAsDataURL(file);
+}
+</script>
+</body>
+</html>
