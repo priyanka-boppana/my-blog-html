@@ -6,6 +6,7 @@
 <title>Priyanka Boppana</title>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+  /* Base Styles from your original file */
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'DM Sans', sans-serif; background: #fff; color: #333; }
   nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; border-bottom: 1px solid #eee; position: sticky; top: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); z-index: 100; }
@@ -24,16 +25,12 @@
   .pill:hover { background: #222; color: #fff; transform: translateY(-2px); }
   section { padding: 60px 40px; max-width: 900px; margin: 0 auto; border-top: 1px solid #f0f0f0; }
   h2 { font-family: 'Lora', serif; font-size: 22px; color: #222; margin-bottom: 24px; }
-  .search-bar { width: 100%; padding: 12px 20px; border-radius: 25px; border: 1px solid #eee; background: #f9f9f9; margin-bottom: 24px; font-family: inherit; font-size: 14px; }
-  .interest-page { padding: 60px 40px; max-width: 700px; margin: 0 auto; }
   .recipe-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 12px; }
-  .recipe-card-btn { background: #fafafa; border: 1px solid #eee; border-radius: 12px; padding: 20px; cursor: pointer; text-align: left; transition: all 0.2s; }
-  .recipe-card-btn:hover { background: #222; color: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+  .recipe-card-btn { background: #fafafa; border: 1px solid #eee; border-radius: 12px; padding: 20px; cursor: pointer; text-align: left; transition: all 0.2s; width: 100%; }
+  .recipe-card-btn:hover { background: #222; color: #fff; transform: translateY(-3px); }
   .rc-emoji { font-size: 32px; margin-bottom: 10px; }
   .rc-name { font-weight: 600; font-size: 15px; margin-bottom: 6px; }
   .rc-desc { font-size: 12px; color: #888; line-height: 1.5; }
-  .recipe-card-btn:hover .rc-desc { color: #ccc; }
-  .recipe-page { padding: 60px 40px; max-width: 750px; margin: 0 auto; }
   .story-content { line-height: 1.9; color: #444; font-size: 17px; font-family: 'Lora', serif; }
   .story-content p { margin-bottom: 1.6rem; }
   .back-btn { background: #f5f5f5; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; margin-bottom: 30px; font-size: 13px; }
@@ -54,40 +51,39 @@
 <div id="mainPage" class="page active">
   <div class="hero">
     <div class="hero-img">🌸</div>
-    <h1>Priyanka Boppana</h1>
-    <p>Capturing the flavors of life and the magic of childhood memories.</p>
+    <h1>Hi, I'm Priyanka 👋</h1>
+    <p>A keeper of stories and a lover of home-cooked flavors.</p>
     <div>
       <button class="pill" onclick="openInterest('stories')">📖 Tara's Stories</button>
-      <button class="pill" onclick="openInterest('cooking')">🍳 My Kitchen</button>
+      <button class="pill" onclick="openInterest('cooking')">🍳 Food & Recipes</button>
     </div>
   </div>
-  <section>
-    <h2>Explore My World</h2>
+  <section id="interests">
+    <h2>💛 My Interests</h2>
     <div class="interest-list">
-      <button class="pill" onclick="openInterest('stories')">📖 Stories</button>
-      <button class="pill" onclick="openInterest('cooking')">🍳 Cooking</button>
-      <button class="pill" onclick="openInterest('photography')">📸 Photography</button>
-      <button class="pill" onclick="openInterest('tech')">💻 Tech</button>
+      <button class="pill" onclick="openInterest('stories')"><span>📖</span> Tara's Stories</button>
+      <button class="pill" onclick="openInterest('cooking')"><span>🍳</span> Cooking</button>
+      <button class="pill" onclick="openInterest('photography')"><span>📸</span> Photography</button>
+      <button class="pill" onclick="openInterest('tech')"><span>💻</span> Tech</button>
     </div>
   </section>
-  <footer>© 2026 Priyanka Boppana</footer>
+  <footer>© 2026 Priyanka Boppana · Made with ♥</footer>
 </div>
 
 <div id="interestPage" class="page">
-  <div class="interest-page">
-    <button class="back-btn" onclick="showMain()">← Back Home</button>
-    <h1 id="iTitle" style="font-family:'Lora', serif; font-size: 36px; margin-bottom: 10px;"></h1>
-    <p id="iDesc" style="color:#888; margin-bottom: 30px;"></p>
-    <input type="text" id="contentSearch" class="search-bar" placeholder="Search by title or keyword..." onkeyup="filterContent()">
+  <div class="interest-page" style="padding: 60px 40px; max-width: 700px; margin: 0 auto;">
+    <button class="back-btn" onclick="showMain()">← Back</button>
+    <h1 id="iTitle" style="font-family:'Lora', serif; font-size: 32px; margin-bottom: 12px;"></h1>
+    <p id="iDesc" style="color: #777; margin-bottom: 30px;"></p>
     <div id="iContent" class="recipe-cards"></div>
   </div>
 </div>
 
 <div id="detailPage" class="page">
-  <div class="recipe-page">
+  <div class="recipe-page" style="padding: 60px 40px; max-width: 750px; margin: 0 auto;">
     <button class="back-btn" id="detailBackBtn">← Back</button>
-    <div id="dEmoji" style="font-size: 50px; margin-bottom: 20px;"></div>
-    <h1 id="dTitle" style="font-family:'Lora', serif; font-size: 32px; margin-bottom: 30px;"></h1>
+    <div id="dEmoji" style="font-size: 48px; margin-bottom: 16px;"></div>
+    <h1 id="dTitle" style="font-family:'Lora', serif; font-size: 32px; margin-bottom: 24px;"></h1>
     <div id="dBody"></div>
   </div>
 </div>
@@ -95,48 +91,33 @@
 <script>
 const data = {
   stories: [
-    { key: 'ride', emoji: '🚲', name: 'The Morning Ride', desc: 'Overcoming fear with Grandpa.', body: `<div class="story-content"><p>Tara was a bright and curious little girl who loved trying new things...</p><p>“I’m doing it! Grandpa, I’m doing it!” she shouted with happiness. courage comes from trying, even when others are afraid.</p></div>` },
-    { key: 'hands', emoji: '👐', name: 'Soft Hands of Love', desc: 'A memory of Grandma’s warmth.', body: `<div class="story-content"><p>What Tara remembered the most were her grandmother’s hands. They were soft—so soft that Tara used to think they felt like butter...</p><p>To Tara, her grandmother was the softest soul she had ever known.</p></div>` },
-    { key: 'festivals', emoji: '🃏', name: 'The Joy of Festivals', desc: 'Card games and family laughter.', body: `<div class="story-content"><p>Her favorite part was when everyone sat together to play cards. All the family members—young and old—would join in...</p><p>In her heart, those joyful family gatherings will always remain her most treasured memories.</p></div>` },
-    { key: 'diwali', emoji: '🪔', name: 'The Lights of Diwali', desc: 'From loud crackers to soft glows.', body: `<div class="story-content"><p>But one Diwali, something changed. While lighting a cracker, it suddenly burst too close and burned Tara’s hand...</p><p>Tara realized that Diwali was not just about loud crackers, but about light, love, and togetherness.</p></div>` },
-    { key: 'birthdays', emoji: '🎂', name: 'Special Birthdays', desc: 'Fairy lights and feeling like a princess.', body: `<div class="story-content"><p>Tara loved how everything felt like a celebration just for her. She felt so special—like a little princess in her own palace...</p><p>Every birthday was a memory of warmth, care, and happiness.</p></div>` },
-    { key: 'food', emoji: '🥘', name: 'Mother’s Homemade Food', desc: 'A warm connection in every bite.', body: `<div class="story-content"><p>When Tara went to the hostel for higher studies, she began to miss her mother’s food a lot...</p><p>Opening the parcels, Tara could almost feel her mother’s love in every bite. It made her feel close to home, even when she was far away.</p></div>` }
+    { key: 'ride', emoji: '🚲', name: 'The Morning Ride', desc: 'Overcoming fear with Grandpa.', body: `<div class="story-content"><p>Tara was a bright and curious little girl who loved trying new things...</p></div>` },
+    { key: 'hands', emoji: '👐', name: 'Soft Hands of Love', desc: 'A memory of Grandma’s warmth.', body: `<div class="story-content"><p>What Tara remembered the most were her grandmother’s hands...</p></div>` },
+    { key: 'festivals', emoji: '🃏', name: 'The Joy of Festivals', desc: 'Card games and family laughter.', body: `<div class="story-content"><p>Her favorite part was when everyone sat together to play cards...</p></div>` },
+    { key: 'diwali', emoji: '🪔', name: 'The Lights of Diwali', desc: 'From loud crackers to soft glows.', body: `<div class="story-content"><p>Tara realized that Diwali was about light, love, and togetherness.</p></div>` },
+    { key: 'birthdays', emoji: '🎂', name: 'Special Birthdays', desc: 'Fairy lights and feeling like a princess.', body: `<div class="story-content"><p>Tara loved how everything felt like a celebration just for her.</p></div>` },
+    { key: 'food', emoji: '🥘', name: 'Mother’s Homemade Food', desc: 'A warm connection in every bite.', body: `<div class="story-content"><p>Opening the parcels, Tara could almost feel her mother’s love.</p></div>` }
   ],
   cooking: [
-    { key: 'pulav', emoji: '🥗', name: 'Instant Pot Veg Pulav', desc: 'Fragrant, quick one-pot meal.', body: `<h3>Process</h3><p>Sauté spices and veggies. Add 3 cups rice and 4.5 cups water. Pressure cook 5 mins. NR 5 mins.</p>` },
-    { key: 'apricot', emoji: '🍑', name: 'Apricot Delight', desc: 'Layered dessert with custard and jam.', body: `<h3>Steps</h3><p>Bake cake, slice in half. Layer with apricot jam, custard milk, and condensed milk. Top with whip cream.</p>` }
+    { key: 'shrimp', emoji: '🍤', name: 'Shrimp Pulav', desc: 'Fragrant one-pot rice.', body: `<p>Process: Sauté spices, add shrimp and rice, cook for 5 mins.</p>` }
   ]
 };
 
-let currentCategory = '';
-
 function openInterest(cat) {
-  currentCategory = cat;
   const list = data[cat] || [];
-  document.getElementById('iTitle').textContent = cat === 'stories' ? "Tara's Stories" : "Cooking Journal";
-  document.getElementById('iDesc').textContent = cat === 'stories' ? "A collection of childhood memories and life lessons." : "Favorite family recipes and kitchen experiments.";
-  renderItems(list);
-  showPage('interestPage');
-}
-
-function renderItems(items) {
-  document.getElementById('iContent').innerHTML = items.map(item => `
-    <button class="recipe-card-btn" onclick="openDetail('${item.key}')">
+  document.getElementById('iTitle').textContent = cat === 'stories' ? "Tara's Stories" : "Cooking";
+  document.getElementById('iDesc').textContent = "A collection of my favorite memories and recipes.";
+  document.getElementById('iContent').innerHTML = list.map(item => `
+    <button class="recipe-card-btn" onclick="openDetail('${cat}', '${item.key}')">
       <div class="rc-emoji">${item.emoji}</div>
       <div class="rc-name">${item.name}</div>
       <div class="rc-desc">${item.desc}</div>
-    </button>
-  `).join('');
+    </button>`).join('');
+  showPage('interestPage');
 }
 
-function filterContent() {
-  const query = document.getElementById('contentSearch').value.toLowerCase();
-  const filtered = data[currentCategory].filter(i => i.name.toLowerCase().includes(query) || i.desc.toLowerCase().includes(query));
-  renderItems(filtered);
-}
-
-function openDetail(key) {
-  const item = data[currentCategory].find(i => i.key === key);
+function openDetail(cat, key) {
+  const item = data[cat].find(i => i.key === key);
   document.getElementById('dEmoji').textContent = item.emoji;
   document.getElementById('dTitle').textContent = item.name;
   document.getElementById('dBody').innerHTML = item.body;
