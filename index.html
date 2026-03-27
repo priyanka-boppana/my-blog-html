@@ -22,69 +22,28 @@
   .hero-img:hover .overlay { display: flex; }
   .hero h1 { font-family: 'Lora', serif; font-size: 32px; color: #222; margin-bottom: 10px; }
   .hero p { color: #888; font-size: 15px; max-width: 400px; margin: 0 auto 24px; line-height: 1.7; }
-  .hero-tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-  .pill { display: inline-flex; align-items: center; gap: 8px; background: #f5f5f5; border-radius: 30px; padding: 10px 18px; font-size: 14px; color: #444; cursor: pointer; border: none; font-family: inherit; transition: all 0.2s; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; background: #f5f5f5; border-radius: 30px; padding: 10px 18px; font-size: 14px; color: #444; cursor: pointer; border: none; font-family: inherit; transition: all 0.2s; margin: 5px; }
   .pill:hover { background: #222; color: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
   section { padding: 60px 40px; max-width: 900px; margin: 0 auto; border-top: 1px solid #f0f0f0; }
   h2 { font-family: 'Lora', serif; font-size: 22px; color: #222; margin-bottom: 24px; }
-  .interest-list { display: flex; flex-wrap: wrap; gap: 12px; }
-  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .gallery-slot { aspect-ratio: 1; background: #f5f5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 6px; border: 2px dashed #ddd; cursor: pointer; position: relative; overflow: hidden; transition: border-color 0.2s; }
-  .gallery-slot:hover { border-color: #aaa; }
-  .gallery-slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
-  .gallery-placeholder-icon { font-size: 22px; opacity: 0.25; }
-  .gallery-placeholder-text { font-size: 11px; color: #aaa; }
-  .back-btn { display: inline-flex; align-items: center; gap: 6px; background: #f5f5f5; color: #555; border: none; cursor: pointer; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-family: inherit; margin-bottom: 36px; transition: all 0.2s; }
-  .back-btn:hover { background: #222; color: #fff; }
-  .interest-page { padding: 60px 40px; max-width: 700px; margin: 0 auto; }
-  .interest-page .icon-big { font-size: 48px; margin-bottom: 16px; display: block; }
-  .interest-page h1 { font-family: 'Lora', serif; font-size: 32px; color: #222; margin-bottom: 12px; }
-  .interest-page p { color: #777; font-size: 15px; line-height: 1.8; margin-bottom: 14px; }
-  .tags-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
-  .tag { background: #f5f5f5; color: #555; padding: 4px 14px; border-radius: 20px; font-size: 12px; }
-  .recipe-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-top: 12px; }
-  .recipe-card-btn { background: #fafafa; border: 1px solid #eee; border-radius: 12px; padding: 18px; cursor: pointer; text-align: left; font-family: inherit; width: 100%; transition: all 0.2s; }
-  .recipe-card-btn.clickable:hover { background: #222; color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-  .recipe-card-btn.clickable:hover .rc-desc, .recipe-card-btn.clickable:hover .rc-meta { color: #bbb; }
-  .rc-emoji { font-size: 28px; margin-bottom: 8px; }
-  .rc-name { font-weight: 600; font-size: 14px; color: #222; margin-bottom: 4px; }
-  .recipe-card-btn.clickable:hover .rc-name { color: #fff; }
-  .rc-desc { font-size: 12px; color: #888; line-height: 1.5; margin-bottom: 8px; }
-  .rc-meta { font-size: 11px; color: #aaa; }
-  .recipe-page { padding: 60px 40px; max-width: 720px; margin: 0 auto; }
-  .recipe-page .emoji-big { font-size: 48px; margin-bottom: 16px; display: block; }
-  .recipe-page h1 { font-family: 'Lora', serif; font-size: 32px; color: #222; margin-bottom: 8px; }
-  .recipe-page .recipe-desc { color: #888; font-size: 14px; margin-bottom: 16px; line-height: 1.6; }
-  .meta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
-  .meta-chip { background: #f5f5f5; padding: 5px 14px; border-radius: 20px; font-size: 12px; color: #555; }
-  .section-label { font-weight: 600; font-size: 12px; color: #222; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 12px; margin-top: 28px; display: block; }
-  .ingredients-box { background: #fafafa; border-radius: 12px; padding: 20px 24px; border: 1px solid #eee; margin-bottom: 28px; }
-  .ing-group-title { font-size: 11px; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 0.07em; padding-top: 10px; margin-bottom: 6px; }
-  .ing-item { display: flex; gap: 8px; font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 4px; }
-  .ing-item::before { content: '•'; color: #ccc; flex-shrink: 0; }
-  .steps-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
-  .step-item { display: flex; gap: 14px; align-items: flex-start; }
-  .step-num { width: 28px; height: 28px; background: #222; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
-  .step-text { font-size: 14px; color: #555; line-height: 1.7; }
+  .recipe-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 12px; }
+  .recipe-card-btn { background: #fafafa; border: 1px solid #eee; border-radius: 12px; padding: 20px; cursor: pointer; text-align: left; transition: all 0.2s; width: 100%; }
+  .recipe-card-btn:hover { background: #222; color: #fff; transform: translateY(-3px); }
+  .rc-emoji { font-size: 32px; margin-bottom: 10px; }
+  .rc-name { font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+  .rc-desc { font-size: 12px; color: #888; line-height: 1.5; }
+  .recipe-card-btn:hover .rc-desc { color: #ccc; }
   .story-content { line-height: 1.9; color: #444; font-size: 17px; font-family: 'Lora', serif; }
   .story-content p { margin-bottom: 1.6rem; }
-  .method-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .method-card { background: #fafafa; border-radius: 12px; padding: 18px; border: 1px solid #eee; }
-  .method-card h4 { font-size: 14px; font-weight: 600; color: #222; margin-bottom: 10px; }
-  .method-step { display: flex; gap: 6px; font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 4px; }
-  .method-step::before { content: '→'; color: #bbb; flex-shrink: 0; }
-  .tip-box { background: #fffbf0; border: 1px solid #f0e6c0; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #666; margin-top: 20px; line-height: 1.6; }
-  .shop-links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
-  .shop-link { background: #fff7ed; border: 1px solid #fddcb5; color: #c4622d; padding: 7px 16px; border-radius: 20px; font-size: 12px; font-weight: 500; text-decoration: none; transition: all 0.2s; }
-  .shop-link:hover { background: #c4622d; color: #fff; }
-  footer { text-align: center; padding: 28px; color: #ccc; font-size: 13px; border-top: 1px solid #eee; }
+  .ingredients-box { background: #fafafa; border-radius: 12px; padding: 20px 24px; border: 1px solid #eee; margin-bottom: 28px; }
+  .ing-item { display: flex; gap: 8px; font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 4px; }
+  .ing-item::before { content: '•'; color: #ccc; flex-shrink: 0; }
+  .step-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; }
+  .step-num { width: 28px; height: 28px; background: #222; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex-shrink: 0; }
+  .step-text { font-size: 14px; color: #555; line-height: 1.7; }
+  .tip-box { background: #fffbf0; border: 1px solid #f0e6c0; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #666; margin-top: 20px; }
+  footer { text-align: center; padding: 40px; color: #bbb; font-size: 12px; border-top: 1px solid #eee; }
   input[type="file"] { display: none; }
-  @media (max-width: 600px) {
-    nav { padding: 16px 20px; }
-    section, .interest-page, .recipe-page { padding: 40px 20px; }
-    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-    .method-cards { grid-template-columns: 1fr; }
-  }
 </style>
 </head>
 <body>
@@ -92,210 +51,154 @@
 <nav>
   <div class="nav-name" onclick="showMain()">Priyanka Boppana</div>
   <ul class="nav-links">
-    <li><button onclick="showMain();setTimeout(()=>document.getElementById('interests').scrollIntoView({behavior:'smooth'}),50)">Interests</button></li>
-    <li><button onclick="showMain();setTimeout(()=>document.getElementById('gallery').scrollIntoView({behavior:'smooth'}),50)">Photos</button></li>
+    <li><button onclick="showMain()">Home</button></li>
+    <li><button onclick="openInterest('stories')">Stories</button></li>
+    <li><button onclick="openInterest('cooking')">Cooking</button></li>
   </ul>
 </nav>
 
 <div id="mainPage" class="page active">
   <div class="hero">
-    <div class="hero-img" onclick="document.getElementById('heroInput').click()">
-      🌸
-      <div class="overlay">+ Photo</div>
-      <input type="file" id="heroInput" accept="image/*" onchange="setHero(event)">
-    </div>
+    <div class="hero-img" onclick="document.getElementById('heroInput').click()">🌸<div class="overlay">+ Photo</div><input type="file" id="heroInput" accept="image/*" onchange="setHero(event)"></div>
     <h1>Hi, I'm Priyanka 👋</h1>
-    <p>A food lover, keeper of stories, and curious soul. Welcome to my personal space.</p>
-    <div class="hero-tags">
+    <p>A keeper of stories and a lover of home-cooked flavors.</p>
+    <div>
       <button class="pill" onclick="openInterest('stories')">📖 Tara's Stories</button>
       <button class="pill" onclick="openInterest('cooking')">🍳 Food & Recipes</button>
-      <button class="pill" onclick="openInterest('photography')">📸 Photography</button>
-      <button class="pill" onclick="openInterest('tech')">💻 Tech</button>
     </div>
   </div>
-
   <section id="interests">
     <h2>💛 My Interests</h2>
     <div class="interest-list">
       <button class="pill" onclick="openInterest('stories')"><span>📖</span> Tara's Stories</button>
       <button class="pill" onclick="openInterest('cooking')"><span>🍳</span> Cooking</button>
-      <button class="pill" onclick="openInterest('reading')"><span>📚</span> Reading</button>
       <button class="pill" onclick="openInterest('photography')"><span>📸</span> Photography</button>
-      <button class="pill" onclick="openInterest('gardening')"><span>🌱</span> Gardening</button>
       <button class="pill" onclick="openInterest('tech')"><span>💻</span> Tech</button>
-      <button class="pill" onclick="openInterest('travel')"><span>✈️</span> Travel</button>
-    </div>
-  </section>
-
-  <section id="gallery">
-    <h2>📷 My Photos</h2>
-    <div class="gallery-grid">
-      <div class="gallery-slot" id="g0" onclick="document.getElementById('gi0').click()"><span class="gallery-placeholder-icon">🖼️</span><span class="gallery-placeholder-text">Click to add</span><input type="file" id="gi0" accept="image/*" onchange="addPhoto(event,0)"></div>
-      <div class="gallery-slot" id="g1" onclick="document.getElementById('gi1').click()"><span class="gallery-placeholder-icon">🖼️</span><span class="gallery-placeholder-text">Click to add</span><input type="file" id="gi1" accept="image/*" onchange="addPhoto(event,1)"></div>
-      <div class="gallery-slot" id="g2" onclick="document.getElementById('gi2').click()"><span class="gallery-placeholder-icon">🖼️</span><span class="gallery-placeholder-text">Click to add</span><input type="file" id="gi2" accept="image/*" onchange="addPhoto(event,2)"></div>
     </div>
   </section>
   <footer>© 2026 Priyanka Boppana · Made with ♥</footer>
 </div>
 
 <div id="interestPage" class="page">
-  <div class="interest-page">
-    <button class="back-btn" onclick="showMain()">← Back</button>
-    <span class="icon-big" id="iIcon"></span>
-    <h1 id="iTitle"></h1>
-    <p id="iDesc"></p>
-    <p id="iDesc2"></p>
-    <div id="iRecipes"></div>
-    <div class="tags-row" id="iTags"></div>
+  <div class="interest-page" style="padding: 60px 40px; max-width: 800px; margin: 0 auto;">
+    <button class="back-btn" style="background:#f5f5f5; border:none; padding:10px 20px; border-radius:20px; cursor:pointer; margin-bottom:30px;" onclick="showMain()">← Back</button>
+    <h1 id="iTitle" style="font-family:'Lora', serif; font-size: 36px; margin-bottom: 12px;"></h1>
+    <p id="iDesc" style="color: #777; margin-bottom: 30px;"></p>
+    <div id="iContent" class="recipe-cards"></div>
   </div>
-  <footer>© 2026 Priyanka Boppana · Made with ♥</footer>
 </div>
 
-<div id="recipePage" class="page">
-  <div class="recipe-page">
-    <button class="back-btn" id="recipeBackBtn">← Back</button>
-    <span class="emoji-big" id="rEmoji"></span>
-    <h1 id="rTitle"></h1>
-    <p class="recipe-desc" id="rDesc"></p>
-    <div class="meta-row" id="rMeta"></div>
-    <div id="rBody"></div>
+<div id="detailPage" class="page">
+  <div class="recipe-page" style="padding: 60px 40px; max-width: 750px; margin: 0 auto;">
+    <button class="back-btn" style="background:#f5f5f5; border:none; padding:10px 20px; border-radius:20px; cursor:pointer; margin-bottom:30px;" id="detailBackBtn">← Back</button>
+    <div id="dEmoji" style="font-size: 48px; margin-bottom: 16px;"></div>
+    <h1 id="dTitle" style="font-family:'Lora', serif; font-size: 32px; margin-bottom: 24px;"></h1>
+    <div id="dBody"></div>
   </div>
-  <footer>© 2026 Priyanka Boppana · Made with ♥</footer>
 </div>
 
 <script>
 const recipes = {
-  shrimp_pulav: {
-    emoji:'🍤', name:'Shrimp Pulav', desc:'Fragrant one-pot rice with tender shrimp & biryani spices.', time:'45 min', servings:'4 servings',
+  veg_pulav: {
+    emoji:'🥗', name:'Instant Pot Veg Pulav', desc:'A quick, fragrant, and healthy one-pot vegetable rice.',
     ingredients:[
-      {group:null, items:['Shrimp – cleaned & deveined','Onions – thinly sliced','Green chillies – slit or chopped','Ginger–garlic paste']},
-      {group:'Whole Biryani Spices', items:['Bay leaf','Cloves','Cardamom','Cinnamon','Star anise']},
-      {group:'Spices & Seasoning', items:['Red chilli powder (Karam)','Salt','Coriander powder (Dhaniya)','Garam masala','Oil']},
-      {group:'Other', items:['Rice – washed & soaked 20–30 min','Fresh coriander leaves','Fresh mint leaves']}
+      {group:'Main', items:['Basmati rice – 3 cups (washed)','Carrots – ½ cup (chopped)','Peas – ½ cup','Potato – 1 (diced)','Onion – ¼ (thinly sliced)','Green chillies – 10 (slit)']},
+      {group:'Whole Spices', items:['Cloves, Cardamom, Cinnamon, Bay leaf']},
+      {group:'Seasoning', items:['Ginger-garlic paste – 1 tbsp','Dhaniya powder – 1 tsp','Garam masala – 1 tsp','Ghee – 1 tbsp','Salt – to taste']}
     ],
-    steps:['Wash and soak the rice for 20–30 minutes.','Heat oil, add whole spices and sauté until aromatic.','Add onions and green chillies, sauté for 2 minutes.','Add shrimp and all powdered spices. Cook for 5 minutes.','Add soaked rice, water (1:1.5 ratio), and herbs.','Pressure cook for 5 mins in IP or 1 whistle on stovetop.'],
-    methods:[{label:'⚡ Instant Pot',steps:['Pressure Cook High for 5 mins.','Natural Release for 5 mins.']},{label:'🔥 Stovetop',steps:['Medium-high for 1 whistle.','Natural release pressure.']}],
-    tip:'💡 Check salt in the water before sealing!'
+    steps:['Turn IP to Sauté mode, add oil and whole spices.','Add onions, potatoes, carrots, peas, and green chillies. Sauté.','Add ginger-garlic paste and powdered spices. Sauté 2 mins.','Add washed rice and 1 spoon of ghee. Sauté 1 min.','Add 4.5 cups water. Cancel Sauté.','CRITICAL: Unplug or let pot cool for 5 mins (prevents Burn notice).','Pressure Cook High for 5 mins. Natural Release for 5 mins.'],
+    tip:'💡 Cooling the pot for 5 mins before pressure cooking prevents the "Burn" notice!'
   },
-  chicken_biryani: {
-    emoji:'🍗', name:'Chicken Biryani', desc:'Juicy fried chicken layered with fragrant biryani rice, sealed and dum-cooked.', time:'90 min', servings:'5–6 servings',
-    ingredients:[
-      {group:'Chicken & Marinade', items:['Boneless chicken','Ginger-garlic paste','Lemon juice','Corn flour','Egg']},
-      {group:'Rice', items:['Biryani rice','Whole spices','Mint & Coriander']}
-    ],
-    steps:['Marinate chicken and deep fry until golden.','Cook curd gravy with spices and add fried chicken.','Boil rice to 80% done with whole spices.','Layer chicken gravy, then rice, then ghee and herbs.','Seal with foil and dum cook on low for 10 minutes.'],
-    methods:[{label:'🔥 Dum Style',steps:['Seal pot tightly with foil.','10 mins on low heat.']}],
-    tip:'💡 Don\'t overcook the rice during boiling; 80% is perfect!'
+  chicken_kebabs: {
+    emoji:'🍢', name:'Ground Chicken Kebabs', desc:'Simple, healthy, and flavorful baked chicken starters.',
+    ingredients:[{group:null, items:['Chicken breast','Onion','Green Chilli','Cilantro','Chili powder','Salt','Dhaniya powder','Garam Masala']}],
+    steps:['Place all ingredients into a food processor. Pulse until finely ground.','Shape the mixture into kebabs or patties.','Place on a baking tray.','Bake at 400°F (200°C) for 15-20 mins until golden.']
+  },
+  cucumber_sauce: {
+    emoji:'🥒', name:'Creamy Cucumber Sauce', desc:'Refreshing dip, perfect for kebabs.',
+    ingredients:[{group:null, items:['Cucumber pulp – 1 cup (squeezed)','Mayonnaise – 1 tbsp','Thick curd / Greek yogurt – ½ cup','Lemon juice – 1 tsp','Parsley, salt, pepper']}],
+    steps:['Combine cucumber, mayo, and curd in a bowl.','Add lemon juice, herbs, and seasoning.','Whisk until smooth. Chill before serving.']
+  },
+  tomato_sauce: {
+    emoji:'🍅', name:'No-Cook Tomato Garlic Sauce', desc:'Fresh and zesty raw sauce.',
+    ingredients:[{group:null, items:['Ripe tomatoes – 2','Garlic – 3 cloves','Chili flakes & powder','Dhaniya powder','Oil & Salt']}],
+    steps:['Place all ingredients in a blender raw.','Blend until smooth.','Refrigerate for 20 mins before serving.']
+  },
+  shrimp_pulav: {
+    emoji:'🍤', name:'Shrimp Pulav', desc:'Fragrant one-pot rice with tender shrimp.',
+    ingredients:[{group:null, items:['Shrimp','Rice','Whole Spices','Onions','Ginger-garlic paste']}],
+    steps:['Sauté spices and onions.','Add shrimp and powdered spices.','Add soaked rice and water.','Pressure cook for 5 minutes.']
   },
   apricot_delight: {
-    emoji:'🍑', name:'Apricot Delight', desc:'Layered cake soaked in condensed milk & custard, topped with apricot jam.', time:'60 min', servings:'8-10 servings',
-    ingredients:[{group:'Main', items:['Vanilla cake mix','Apricot jam','Custard powder','Condensed milk','Whipped cream']}],
-    steps:['Bake vanilla cake and slice in half horizontally.','Make thick custard and mix condensed milk with plain milk.','Layer jam, cake, soak, custard, and repeat.','Top with whipped cream and garnish with jam and nuts.','Chill for 2 hours before serving.'],
-    methods:[{label:'🍰 Assembly',steps:['Soak is key for moistness.','Chilling blends the flavors.']}],
-    tip:'💡 Even better the next day!'
+    emoji:'🍑', name:'Apricot Delight', desc:'Layered dessert with custard and apricot jam.',
+    ingredients:[{group:null, items:['Vanilla cake','Apricot jam','Custard','Condensed milk','Cream']}],
+    steps:['Bake vanilla cake and slice in half.','Layer jam, cake, soak with condensed milk mixture.','Add custard layer and repeat.','Top with whipped cream and chill.']
   },
-  tara_ride: {
-    emoji:'🚲', name:'The Morning Ride', desc:'A tale of learning courage and trying new things.', body: `<div class="story-content"><p>Tara was a bright and curious little girl who loved trying new things. One evening, while watching children ride their bicycles in the park, she turned to her grandfather with sparkling eyes.</p><p>“Grandpa, I want to learn how to ride a bike!” she said excitedly. Her grandfather smiled warmly. “Of course, Tara. I will teach you tomorrow morning.”</p><p>As soon as the first light of morning appeared, Tara jumped out of bed. Her grandfather encouraged her, saying, “Riding a bike is very easy, Tara... You’ll be able to ride in no time.”</p><p>At first, she wobbled a little, but she remembered his words—balance and keep moving. Slowly, she began to ride. “I’m doing it! Grandpa, I’m doing it!” she shouted with happiness. Tara realized that courage comes from trying, even when others are afraid.</p></div>`
-  },
-  tara_hands: {
-    emoji:'👐', name:'Soft Hands of Love', desc:'A memory of the warmth and kindness of her grandmother.', body: `<div class="story-content"><p>When Tara was very young, her grandmother took care of her every day. She would gently bathe Tara, dress her up, and get her ready with so much love and patience. Every little moment felt warm and safe.</p><p>What Tara remembered the most were her grandmother’s hands. They were soft—so soft that Tara used to think they felt like butter, like smooth feathers brushing against her skin. Whenever her grandmother held her, Tara felt comforted.</p><p>Tara realized that it wasn’t just the softness she remembered. It was her grandmother’s kindness, her strength, and the way she made everything feel better. To Tara, her grandmother was the softest soul she had ever known—someone whose love would stay with her forever.</p></div>`
-  },
-  tara_festivals: {
-    emoji:'🃏', name:'The Joy of Festivals', desc:'Treasured memories of family gatherings and games.', body: `<div class="story-content"><p>Tara always looked forward to festivals more than anything else. Every festival felt special because the whole family would gather together at home. The house would be full of life—laughter, delicious food, and happy conversations.</p><p>Her favorite part was when everyone sat together to play cards. All the family members—young and old—would join in. They would laugh, tease each other, and sometimes pretend to get upset when they lost. But in the end, it was never about winning or losing. It was about being together.</p><p>Those festival days became unforgettable memories for Tara, filled with love and togetherness.</p></div>`
-  },
-  tara_diwali: {
-    emoji:'🪔', name:'The Lights of Diwali', desc:'Finding a new way to celebrate with light and love.', body: `<div class="story-content"><p>Diwali was always Tara’s favorite festival. One Diwali, something changed. While lighting a cracker, it suddenly burst too close and burned Tara’s hand. It hurt a lot, and she got very scared.</p><p>From that day on, Tara was afraid to light big crackers. But she still loved the festival. She found a new way to celebrate by decorating her home with beautiful lights and diyas. The gentle lights made her feel peaceful and happy again.</p><p>Tara realized that Diwali was not just about loud crackers, but about light, love, and togetherness.</p></div>`
-  },
-  tara_birthdays: {
-    emoji:'🎂', name:'Special Birthdays', desc:'Feelings of love and magic on her special day.', body: `<div class="story-content"><p>Tara always loved her birthdays. Every year, her father made them incredibly special. The house would be full of decorations, lights, and laughter. Strings of fairy lights would glow all around, making the house feel magical.</p><p>Her parents always took such good care of her. They would bring her new clothes, thoughtful gifts, and make sure every little detail was perfect. Every birthday was not just a celebration—it was a memory of warmth, care, and happiness that Tara would always treasure.</p></div>`
-  },
-  tara_food: {
-    emoji:'🥘', name:'Mother’s Homemade Food', desc:'The loving connection of a mother’s cooking.', body: `<div class="story-content"><p>Tara always loved her mother’s homemade food. Her mother was an amazing cook, able to make every dish taste perfect. Food for Tara was more than just a meal; it was a way to feel cared for, loved, and happy.</p><p>When Tara went to the hostel for higher studies, she began to miss her mother’s food a lot. But her mother made sure Tara never felt too far from home. Every week, she would pack homemade meals and send them. Opening the parcels, Tara could almost feel her mother’s love in every bite.</p></div>`
-  }
+  ride: { emoji:'🚲', name:'The Morning Ride', isStory:true, body:'Tara was a bright and curious little girl who loved trying new things... courage comes from trying, even when others are afraid.' },
+  hands: { emoji:'👐', name:'Soft Hands of Love', isStory:true, body:'What Tara remembered the most were her grandmother’s hands. They were soft like butter... a love that stays forever.' },
+  festivals: { emoji:'🃏', name:'The Joy of Festivals', isStory:true, body:'Tara looked forward to festivals. The whole family would play cards, laugh, and tease each other. It was always about togetherness.' },
+  diwali: { emoji:'🪔', name:'The Lights of Diwali', isStory:true, body:'After a cracker accident, Tara found beauty in the soft glow of diyas. Diwali was about light and love, not just noise.' },
+  birthdays: { emoji:'🎂', name:'Special Birthdays', isStory:true, body:'Every year, her father made her birthday magical with fairy lights and love. She felt like a princess.' },
+  food_story: { emoji:'🥘', name:'Mother’s Homemade Food', isStory:true, body:'Even at a hostel, Tara felt her mother’s love through packed meals. A warm connection in every bite.' }
 };
 
 const interests = {
-  stories: {
-    icon: '📖', title: "Tara's Stories", desc: 'Heartfelt tales and childhood memories.', desc2: 'A collection of stories about growth, family, and the little moments that shape us.', tags: ['Family', 'Memories', 'Lessons'],
-    items: [
-      {key:'tara_ride', emoji:'🚲', name:'The Morning Ride', desc:'Learning courage.'},
-      {key:'tara_hands', emoji:'👐', name:'Soft Hands of Love', desc:'Grandmother\'s warmth.'},
-      {key:'tara_festivals', emoji:'🃏', name:'The Joy of Festivals', desc:'Family traditions.'},
-      {key:'tara_diwali', emoji:'🪔', name:'Lights of Diwali', desc:'A new celebration.'},
-      {key:'tara_birthdays', emoji:'🎂', name:'Special Birthdays', desc:'Magical celebrations.'},
-      {key:'tara_food', emoji:'🥘', name:'Mother\'s Food', desc:'Love in every bite.'}
-    ]
-  },
-  cooking: {
-    icon: '🍳', title: 'Cooking', desc: 'My favorite kitchen experiments.', desc2: 'Recipes that bring comfort and joy to the table.', tags: ['Indian', 'Baking', 'One-Pot'],
-    items: [
-      {key:'shrimp_pulav', emoji:'🍤', name:'Shrimp Pulav', desc:'Fragrant rice & shrimp.'},
-      {key:'chicken_biryani', emoji:'🍗', name:'Chicken Biryani', desc:'Juicy & aromatic.'},
-      {key:'apricot_delight', emoji:'🍑', name:'Apricot Delight', desc:'Sweet layered treat.'}
-    ]
-  }
+  stories: { title: "Tara's Stories", desc: 'Heartfelt tales and childhood memories.', items: [
+    {key:'ride', emoji:'🚲', name:'Morning Ride'}, {key:'hands', emoji:'👐', name:'Soft Hands'}, {key:'festivals', emoji:'🃏', name:'Festivals'}, 
+    {key:'diwali', emoji:'🪔', name:'Diwali Lights'}, {key:'birthdays', emoji:'🎂', name:'Birthdays'}, {key:'food_story', emoji:'🥘', name:'Mother\'s Food'}
+  ]},
+  cooking: { title: "My Kitchen", desc: 'Favorite family recipes.', items: [
+    {key:'veg_pulav', emoji:'🥗', name:'Veg Pulav'}, {key:'chicken_kebabs', emoji:'🍢', name:'Chicken Kebabs'},
+    {key:'shrimp_pulav', emoji:'🍤', name:'Shrimp Pulav'}, {key:'apricot_delight', emoji:'🍑', name:'Apricot Delight'},
+    {key:'cucumber_sauce', emoji:'🥒', name:'Cucumber Sauce'}, {key:'tomato_sauce', emoji:'🍅', name:'Tomato Sauce'}
+  ]}
 };
 
-function openInterest(key) {
-  const d = interests[key];
-  document.getElementById('iIcon').textContent = d.icon;
+function openInterest(cat) {
+  const d = interests[cat];
   document.getElementById('iTitle').textContent = d.title;
   document.getElementById('iDesc').textContent = d.desc;
-  document.getElementById('iDesc2').textContent = d.desc2;
-  document.getElementById('iTags').innerHTML = d.tags.map(t=>`<span class="tag">${t}</span>`).join('');
-  document.getElementById('iRecipes').innerHTML = `
-    <div class="recipe-cards">
-      ${d.items.map(r=>`
-        <button class="recipe-card-btn clickable" onclick="openRecipe('${r.key}', '${key}')">
-          <div class="rc-emoji">${r.emoji}</div>
-          <div class="rc-name">${r.name}</div>
-          <div class="rc-desc">${r.desc}</div>
-        </button>`).join('')}
-    </div>`;
-  document.getElementById('recipeBackBtn').onclick = () => openInterest(key);
-  document.getElementById('mainPage').classList.remove('active');
-  document.getElementById('interestPage').classList.add('active');
-  window.scrollTo(0,0);
+  document.getElementById('iContent').innerHTML = d.items.map(item => `
+    <button class="recipe-card-btn" onclick="openDetail('${item.key}', '${cat}')">
+      <div class="rc-emoji">${item.emoji}</div>
+      <div class="rc-name">${item.name}</div>
+      <div class="rc-desc">${recipes[item.key].desc}</div>
+    </button>`).join('');
+  showPage('interestPage');
 }
 
-function openRecipe(key, parentKey) {
+function openDetail(key, parent) {
   const r = recipes[key];
-  document.getElementById('rEmoji').textContent = r.emoji;
-  document.getElementById('rTitle').textContent = r.name;
+  document.getElementById('dEmoji').textContent = r.emoji;
+  document.getElementById('dTitle').textContent = r.name;
   let html = '';
-  if(r.body) {
-    html = r.body;
+  if(r.isStory) {
+    html = `<div class="story-content"><p>${r.body}</p></div>`;
   } else {
-    html += `<span class="section-label">Ingredients</span><div class="ingredients-box">`;
-    r.ingredients.forEach(g => { g.items.forEach(item => { html += `<div class="ing-item">${item}</div>`; }); });
-    html += `</div><span class="section-label">Steps</span><div class="steps-list">`;
-    r.steps.forEach((s,i) => { html += `<div class="step-item"><div class="step-num">${i+1}</div><div class="step-text">${s}</div></div>`; });
+    html += `<div class="ingredients-box">`;
+    r.ingredients.forEach(g => {
+      if(g.group) html += `<div style="font-size:11px; color:#999; text-transform:uppercase; margin:10px 0 5px;">${g.group}</div>`;
+      g.items.forEach(i => html += `<div class="ing-item">${i}</div>`);
+    });
     html += `</div>`;
+    r.steps.forEach((s, i) => html += `<div class="step-item"><div class="step-num">${i+1}</div><div class="step-text">${s}</div></div>`);
+    if(r.tip) html += `<div class="tip-box">${r.tip}</div>`;
   }
-  document.getElementById('rBody').innerHTML = html;
-  document.getElementById('interestPage').classList.remove('active');
-  document.getElementById('recipePage').classList.add('active');
+  document.getElementById('dBody').innerHTML = html;
+  document.getElementById('detailBackBtn').onclick = () => showPage('interestPage');
+  showPage('detailPage');
+}
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
 
-function showMain() {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('mainPage').classList.add('active');
-}
-
+function showMain() { showPage('mainPage'); }
 function setHero(e) {
   const reader = new FileReader();
   reader.onload = ev => document.querySelector('.hero-img').innerHTML = `<img src="${ev.target.result}"><div class="overlay">Change</div><input type="file" id="heroInput" accept="image/*" onchange="setHero(event)">`;
-  reader.readAsDataURL(e.target.files[0]);
-}
-
-function addPhoto(e, idx) {
-  const reader = new FileReader();
-  reader.onload = ev => {
-    const slot = document.getElementById('g'+idx);
-    slot.style.border = 'none';
-    slot.innerHTML = `<img src="${ev.target.result}"><input type="file" id="gi${idx}" accept="image/*" onchange="addPhoto(event,${idx})">`;
-  };
   reader.readAsDataURL(e.target.files[0]);
 }
 </script>
